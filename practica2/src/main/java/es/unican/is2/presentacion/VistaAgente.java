@@ -103,7 +103,7 @@ public class VistaAgente extends JFrame {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				rellenaDatosCliente(txtNombreCliente.getText());
+				rellenaDatosCliente(txtDniCliente.getText());
 			}
 		});
 		btnBuscar.setBounds(21, 122, 89, 23);
@@ -113,28 +113,27 @@ public class VistaAgente extends JFrame {
 	}
 
 	private void rellenaDatosCliente(String dni) {
-		Cliente c;
 		try {
-			c = info.consultaCliente(dni);
-		if (c!=null) {
+			Cliente c = info.consultaCliente(dni);
+			// Si llegamos aquí, el cliente existe
 			txtNombreCliente.setText(c.getNombre());
 			txtTotalCliente.setText(Double.toString(c.totalSeguros()));
 			listModel.removeAllElements();
-			for (Seguro v:c.getSeguros()) {
-				listModel.addElement(v.getMatricula() + " "+v.getCobertura());
+			for (Seguro v : c.getSeguros()) {
+				listModel.addElement(v.getMatricula() + " " + v.getCobertura());
 			}
-		} else {
-			txtNombreCliente.setText("Error en BBDD");
+		} catch (OperacionNoValida e) {
+			// DNI no existe
+			txtNombreCliente.setText("DNI No Válido");
 			txtTotalCliente.setText("");
 			listModel.removeAllElements();
-		}
 		} catch (DataAccessException e) {
-			e.printStackTrace();
-			txtNombreCliente.setText("Error en BBDD");
+			// Error de BBDD
+			txtNombreCliente.setText("Error BBDD");
 			txtTotalCliente.setText("");
 			listModel.removeAllElements();
+			e.printStackTrace();
 		}
-		
 	}
 }
 

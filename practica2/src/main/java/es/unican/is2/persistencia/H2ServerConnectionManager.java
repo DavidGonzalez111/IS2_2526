@@ -91,10 +91,10 @@ public class H2ServerConnectionManager {
 			stm.executeUpdate(sql);
 			
 			sql = "INSERT INTO Seguros (matricula, fechaInicio, cobertura, potencia, cliente_FK) "
-					+ "VALUES ('4444AAA', '2024-01-02', 'TERCEROS', 40, '44444444A')";
+					+ "VALUES ('4444AAA', '2026-01-02', 'TERCEROS', 40, '44444444A')";
 			stm.executeUpdate(sql);
 			sql = "INSERT INTO Seguros (matricula, fechaInicio, cobertura, potencia, cliente_FK) "
-					+ "VALUES ('4444BBB', '2024-01-02', 'TERCEROS_LUNAS', 300, '44444444A')";
+					+ "VALUES ('4444BBB', '2026-01-02', 'TERCEROS_LUNAS', 300, '44444444A')";
 			stm.executeUpdate(sql);
 			
 			

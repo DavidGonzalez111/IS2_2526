@@ -3,6 +3,7 @@ package es.unican.is2.comun;
 
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Clase que representa un seguro de coche.
@@ -118,8 +119,31 @@ public class Seguro {
 	 *         0 si el seguro todavía no está en vigor (no se ha alcanzado su fecha de inicio)
      */
 	public double precio() {
-		return 0;
-	}
+        if (fechaInicio == null || fechaInicio.isAfter(LocalDate.now())) {
+            return 0; // seguro aún no en vigor
+        }
+
+        // 1. Precio base según cobertura
+        double precioBase = switch (cobertura) {
+            case TODO_RIESGO -> 1000;
+            case TERCEROS_LUNAS -> 600;
+            case TERCEROS -> 400;
+        };
+
+        // 2. Incremento según potencia del coche
+        if (potencia >= 90 && potencia <= 110) {
+            precioBase *= 1.05; // +5%
+        } else if (potencia > 110) {
+            precioBase *= 1.20; // +20%
+        }
+
+        // descuento primer año
+		if (fechaInicio.getYear() == LocalDate.now().getYear()) {
+			precioBase *= 0.8; // 20% descuento
+		}
+
+        return precioBase;
+    }
 	
 }
 

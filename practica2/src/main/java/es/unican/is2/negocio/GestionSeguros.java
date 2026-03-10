@@ -133,7 +133,6 @@ public class GestionSeguros implements IGestionSeguros, IGestionClientes, IInfoS
     @Override
     public Cliente consultaCliente(String dni) throws DataAccessException, OperacionNoValida {
         Cliente cliente = clientesDAO.cliente(dni);
-
         if (cliente == null) {
             throw new OperacionNoValida("No existe un cliente con el DNI indicado");
         }

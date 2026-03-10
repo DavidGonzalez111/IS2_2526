@@ -16,4 +16,5 @@ es\unican\is2\persistencia\ClienteMapper.class
 es\unican\is2\persistencia\SegurosDAO.class
 es\unican\is2\comun\Seguro.class
 es\unican\is2\comun\OperacionNoValida.class
+es\unican\is2\comun\Seguro$1.class
 es\unican\is2\presentacion\VistaAgente$1.class

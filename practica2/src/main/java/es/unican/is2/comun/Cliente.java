@@ -78,9 +78,17 @@ public class Cliente {
      * Calcula el total a pagar por el cliente por 
      * todos los seguros a su nombre
      */
-    public double totalSeguros() {
-        return 0;
-    }
+     public double totalSeguros() {
+        double total = 0;
+        for (Seguro s : seguros) {
+            total += s.precio();
+        }
 
+        if (minusvalia) {
+            total *= 0.75; // descuento del 25%
+        }
+
+        return total;
+    }
 }
 

@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>es.unican.is2</groupId>
+    <artifactId>SegurosFinal</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+    <name>SegurosFinal</name> <!-- Este es el nombre por defecto en Sonar -->
+
+    <properties>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+
+        <!-- Propiedades para usar SonarQube en local-->
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        
+        <!-- Propiedades para usar SonarCloud -->
+        <!-- <sonar.projectKey>Seguros3</sonar.projectKey> -->
+        <!-- <sonar.projectName>Seguros3</sonar.projectName> -->
+    </properties>
+
+    <!-- Nombres de los directorios que contienen los módulos. Asegurar que se correspondan con vuestros directorios -->
+    <modules>
+	<module>segurosCommon</module>
+ 	<module>segurosDAOH2</module>
+    <module>segurosBusiness</module>   
+    <module>segurosGUI</module>
+	<module>segurosMain</module>
+    </modules>
+
+</project>
